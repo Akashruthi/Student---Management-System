@@ -1,0 +1,290 @@
+<?php
+	if($_SERVER['REQUEST_METHOD'] == 'POST'){
+//Student personal details
+$rn=$_POST['lrn'];
+$ln=$_POST['lname'];
+$fn=$_POST['fname'];
+$rel=$_POST['religion'];
+$mot=$_POST['mot'];
+$bg=$_POST['bg'];
+$aadhar=$_POST['anum'];
+$gender=$_POST['gender'];
+$dob=$_POST['dob'];
+$cn=$_POST['cn'];
+$prog = $_POST['prog'];
+$num=$_POST['num'];
+$email=$_POST['email'];
+$comm=$_POST['comm'];
+$nat=$_POST['nn'];
+$term = $_POST['term'];
+$user = $_SESSION['ID'];
+
+//Bank Details
+$bn=$_POST['bn'];
+$bb=$_POST['bb'];
+$acnum=$_POST['acnum'];
+$ifsc=$_POST['ifsc'];
+
+//School Details SSLC
+$ns1=$_POST['ns1'];
+$mark10=$_POST['10mark'];
+$per10=$_POST['10per'];
+$yop10=$_POST['10yop'];
+
+//School Details HSC
+$ns2=$_POST['ns2'];
+$mg=$_POST['mg'];
+$mp=$_POST['mp'];
+$mt=$_POST['mt'];
+
+//permanent address
+$pa=$_POST['pa'];
+$pin=$_POST['pin'];
+
+//communication address
+$al=$_POST['al'];
+$pinl=$_POST['pinl'];
+
+//Father
+$fan=$_POST['fan'];
+$do=$_POST['do'];
+$fnum=$_POST['fnum'];
+$ai=$_POST['ai'];
+
+//Mother
+$mn=$_POST['mn'];
+$mdo=$_POST['mdo'];
+$mnum=$_POST['mnum'];
+$mai=$_POST['mai'];
+
+include 'db.php';
+$search_query = mysqli_query($conn, "SELECT * FROM student_info WHERE RN_NO = '$rn'");
+		$num_row = mysqli_num_rows($search_query);
+		if($num_row >= 1){
+			"<script>
+			alert('RN is not available.');
+			 location.replace(document.referrer);
+			</script>";
+		}else{
+			$sql = "INSERT INTO student_info
+			 (
+			 RN_NO,
+			 FIRSTNAME,
+			 LASTNAME,
+			 GENDER,
+			 DATE_OF_BIRTH,
+			 RELIGION,
+			 COMMUNITY,
+			 CASTE_NAME,
+			 MOTHER_TONGUE,
+			 BLOOD_GROUP,
+			 NUMBER,
+			 EMAIL,
+			 NATIONALITY,
+			 AADHAR,
+			 DEPARTMENT,
+			 TERM
+			 
+			   )
+		VALUES (
+			'$rn',
+			'$fn',
+			'$ln',
+			'$gender',
+			'$dob',
+			'$rel',
+			'$comm',
+			'$cn',
+			'$mot',
+			'$bg',
+			'$num',
+			'$email',
+			'$nat',
+			'$aadhar',
+			'$prog',
+			'$term'
+		)";}
+        $search_query1 = mysqli_query($conn, "SELECT * FROM student_bank WHERE RN_NO = '$rn'");
+		$num_row1 = mysqli_num_rows($search_query1);
+		if($num_row1 >= 1){
+			"<script>
+			alert('RN is not available.');
+			 location.replace(document.referrer);
+			</script>";
+		}else{
+			$sql1 = "INSERT INTO student_bank
+			 (
+			 RN_NO,
+			 BANK_NAME,
+			 BRANCH,
+			 ACC_NUM,
+			 IFSC
+			 )
+		VALUES (
+			'$rn',
+			'$bn',
+			'$bb',
+			'$acnum',
+			'$ifsc'
+		)";}
+
+		$search_query2 = mysqli_query($conn, "SELECT * FROM student_schoolinfo_sslc WHERE RN_NO = '$rn'");
+		$num_row2 = mysqli_num_rows($search_query2);
+		if($num_row2 >= 1){
+			"<script>
+			alert('RN is not available.');
+			 location.replace(document.referrer);
+			</script>";
+		}else{
+			$sql2 = "INSERT INTO student_schoolinfo_sslc
+			 (
+			 RN_NO,
+			 SCHOOL_NAME,
+			 10TH_MARK,
+			 10TH_PERCENTAGE,
+			 10TH_YOP
+			 )
+		VALUES (
+			'$rn',
+			'$ns1',
+			'$mark10',
+			'$per10',
+			'$yop10'
+		)";
+		}
+        $search_query3 = mysqli_query($conn, "SELECT * FROM student_schoolinfo_hsc_iti WHERE RN_NO = '$rn'");
+		$num_row3 = mysqli_num_rows($search_query3);
+		if($num_row3 >= 1){
+			"<script>
+			alert('RN is not available.');
+			 location.replace(document.referrer);
+			</script>";
+		}else{
+			$sql3 = "INSERT INTO student_schoolinfo_hsc_iti
+			 (
+			 RN_NO,
+			 SCHOOL_ITI_NAME,
+			 12TH_ITI_MARK,
+			 12TH_ITI_PERCENTAGE,
+			 12TH_ITI_YOP
+			 )
+		VALUES (
+			'$rn',
+			'$ns2',
+			'$mg',
+			'$mp',
+			'$mt'
+		)";
+		}
+		$search_query4 = mysqli_query($conn, "SELECT * FROM student_mother WHERE RN_NO = '$rn'");
+		$num_row4 = mysqli_num_rows($search_query4);
+		if($num_row4 >= 1){
+			"<script>
+			alert('RN is not available.');
+			 location.replace(document.referrer);
+			</script>";
+		}else{
+			$sql4 = "INSERT INTO student_mother
+			 (
+			 RN_NO,
+			 NAME,
+			 OCCUPATION,
+			 MOBILE,
+			 ANNUAL_INCOME
+			 )
+		VALUES (
+			'$rn',
+			'$mn',
+			'$mdo',
+			'$mnum',
+			'$mai'
+		)";}
+		$search_query5 = mysqli_query($conn, "SELECT * FROM student_father_guardian WHERE RN_NO = '$rn'");
+		$num_row5 = mysqli_num_rows($search_query5);
+		if($num_row5 >= 1){
+			"<script>
+			alert('RN is not available.');
+			 location.replace(document.referrer);
+			</script>";
+		}else{
+			$sql5 = "INSERT INTO student_father_guardian
+			 (
+			 RN_NO,
+			 NAME,
+			 OCCUPATION,
+			 MOBILE,
+			 ANNUAL_INCOME
+			 )
+		VALUES (
+			'$rn',
+			'$fan',
+			'$do',
+			'$fnum',
+			'$ai'
+		)";}
+		$search_query6 = mysqli_query($conn, "SELECT * FROM student_address_pmt WHERE RN_NO = '$rn'");
+		$num_row6 = mysqli_num_rows($search_query6);
+		if($num_row6 >= 1){
+			"<script>
+			alert('RN is not available.');
+			 location.replace(document.referrer);
+			</script>";
+		}else{
+			$sql6 = "INSERT INTO student_address_pmt
+			 (
+			 RN_NO,
+			 ADDRESS,
+			 PINCODE
+			 )
+		VALUES (
+			'$rn',
+			'$pa',
+			'$pin'
+		)";}
+		$search_query7 = mysqli_query($conn, "SELECT * FROM student_address_communication WHERE RN_NO = '$rn'");
+		$num_row7 = mysqli_num_rows($search_query7);
+		if($num_row7 >= 1){
+			"<script>
+			alert('RN is not available.');
+			 location.replace(document.referrer);
+			</script>";
+		}else{
+			$sql7 = "INSERT INTO student_address_communication
+			 (
+			 RN_NO,
+			 ADDRESS,
+			 PINCODE
+			 )
+		VALUES (
+			'$rn',
+			'$pa',
+			'$pin'
+		)";}
+		
+		mysqli_query($conn, "INSERT into history_log (transaction,user_id,date_added) 
+		VALUES ('added $fn $ln as new student','$user',NOW() )");
+if (mysqli_query($conn, $sql)) {
+ if (mysqli_query($conn, $sql1)) {
+	if (mysqli_query($conn, $sql2)) {
+		if (mysqli_query($conn, $sql3)) {
+			if (mysqli_query($conn, $sql4)) {
+				if (mysqli_query($conn, $sql5)) {
+					if (mysqli_query($conn, $sql6)) {
+						if (mysqli_query($conn, $sql7)) {
+			echo "<div class='erlert-success'><center><h4>" . "New Student Successfully Added." . "</h4></center></div>";
+						}}}}}}}
+		} else {
+		    "<script>
+			alert('Failed to Submit.');
+			</script>";
+		}
+
+
+		}
+
+
+
+		
+mysqli_close($conn);
+
+  ?>
