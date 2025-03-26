@@ -33,7 +33,6 @@ PASSWORD
 username : sit
 password : sit123
 
-https://github.com/Akashruthi/Student---Management-System/blob/main/Screenshot%202025-03-26%20205917.png
 
 
 			
