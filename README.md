@@ -18,11 +18,7 @@ Server : Xampp, Apache, MYSQL
 
 Browser : Google Chrome
 
-
-------------------------------------------------------------------------------------
-
-			# How to run the project :
------------------------------------------------------------------------------------
+ # How to run the project
 
 step 1 - Extract the folder sm and copy it to allocated path of xampp in your desktop/laptop 
 
