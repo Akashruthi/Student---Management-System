@@ -28,14 +28,11 @@ step 3 - http://localhost/phpmyadmin/ import the database in phpmyadmin
 
 step 4 - copy the link -> http://localhost/sm/login.php
 
-------------------------------------------------------------------------------------
-	Password 
-------------------------------------------------------------------------------------
-
+PASSWORD 
+--------------
 username : sit
-
 password : sit123
 
 
-			!!!! All done !!!!
+			
 
